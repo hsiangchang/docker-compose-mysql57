@@ -1,0 +1,17 @@
+version: "3"
+services:
+  db:
+    image: mysql/mysql-server:5.7
+    container_name: mysql57
+    restart: always
+    environment:
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: changeit
+      MYSQL_ROOT_PASSWORD: changeit
+      MYSQL_DATABASE: demo
+      TZ: Asia/Taipei
+    ports:
+      - 33060:3306
+    volumes:
+      - ./config/my.cnf:/etc/my.cnf
+      - ./sqls:/docker-entrypoint-initdb.d
